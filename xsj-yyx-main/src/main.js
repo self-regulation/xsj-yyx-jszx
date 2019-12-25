@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import socket from "./utils/socket";
-import { Button, Layout, Col, Row } from "ant-design-vue";
+import { Button, Layout, Col, Row, Input } from "ant-design-vue";
 // import "ant-design-vue/lib/button/style/css";
 
 Vue.config.productionTip = false;
@@ -12,6 +12,7 @@ Vue.use(Button);
 Vue.use(Layout);
 Vue.use(Col);
 Vue.use(Row);
+Vue.use(Input);
 // Vue.use(Layout);
 
 socket.on("connect", () => {

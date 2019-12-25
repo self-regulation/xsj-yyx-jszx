@@ -19,7 +19,7 @@
         <div class="gutter-box">col-6</div>
       </a-col>
     </a-row>
-  </div> -->
+    </div>-->
 
     <section class="gamelist">
       <ul class="gamelist-wrap">
@@ -30,7 +30,7 @@
               <div class="gameitem-intr">
                 <h2 style="color:white;font-size:14px">云游戏</h2>
               </div>
-              <a-button type="primary" @click="startGame()">启动</a-button>
+              <a-button type="primary" @click="startGame()" target="_blank">启动</a-button>
             </div>
           </div>
         </li>
@@ -58,6 +58,22 @@ export default {
       // });
       // window.open(routeData.href, '_blank');
       this.$router.push("local");
+      // let routeData = this.$router.resolve({
+      //   name: "local",
+      //   query: { goodsId: "1111" }
+      // });
+      // window.open(routeData.href, "_blank");
+      //  let routeUrl = this.$router.resolve({
+      //       path: "/sb",
+      //       query: {id:96}
+      //  });
+      //  window.open(routeUrl.href, '_blank');
+      //  window.open("/local");
+      // let routeData = this.$router.resolve({
+      //   path: "/about",
+      //   query: {}
+      // });
+      // window.open(routeData.href, "_blank");
     }
   }
 };

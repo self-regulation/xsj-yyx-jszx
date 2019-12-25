@@ -6,18 +6,23 @@
           <div>
             <video src id="rtcA" controls autoplay></video>
           </div>
+          <div>
+            <a-textarea name="acceptMessage" placeholder="接受消息" :rows="4" :span="12" />
+          </div>
         </a-col>
         <a-col :span="12" :order="2">
           <div>
             <video src id="rtcB" controls autoplay></video>
           </div>
+
           <div>
-            <a-button type="primary" @click="call" :disabled="allowCall"
-              >呼叫</a-button
-            >
-            <a-button type="primary" @click="hangup" :disabled="allowHangup"
-              >挂断</a-button
-            >
+            <a-textarea placeholder="发送消息" :rows="4" :span="12" v-model="messages" />
+          </div>
+
+          <div>
+            <a-button type="primary" @click="call" :disabled="allowCall">呼叫</a-button>
+            <a-button type="primary" @click="hangup" :disabled="allowHangup">挂断</a-button>
+            <a-button type="primary" @click="sendMessage">发送消息</a-button>
           </div>
         </a-col>
       </a-row>
@@ -31,6 +36,7 @@ export default {
   data() {
     return {
       // localstream: null
+      messages: "1111",
       peerA: null,
       peerB: null,
       channelA: null,
@@ -46,6 +52,10 @@ export default {
     };
   },
   methods: {
+    sendMessage() {
+      console.log(this.messages);
+      this.channelB.send;
+    },
     async call() {
       if (!this.peerA || !this.peerB) {
         // 判断是否有对应实例，没有就重新创建
@@ -180,6 +190,26 @@ export default {
     this.$nextTick(() => {
       this.createMedia();
     });
+
+    window.addEventListener("keydown", e => {
+      if (!e.repeat)
+        console.log(`第一个 keydown 事件。key 属性的值为"${e.key}"`);
+      else console.log(`keydown 事件重复。key 属性的值为"${e.key}"`);
+
+      return;
+    });
+
+    // textarea.addEventListener('beforeinput', (e) => {
+    //   logMessage(`beforeinput 事件。你准备输入"${e.data}"`);
+    // });
+
+    // textarea.addEventListener('input', (e) => {
+    //   logMessage(`input 事件。你刚刚输入了"${e.data}"`);
+    // });
+
+    // textarea.addEventListener('keyup', (e) => {
+    //   logMessage(`keyup 事件。key 属性的值为"${e.key}"`);
+    // });
   }
 };
 </script>
